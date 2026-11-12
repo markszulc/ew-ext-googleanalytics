@@ -126,6 +126,9 @@ code {
   border-radius: 4px;
 }
 
+.top .side { display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; }
+.top .demo-tag { font-size: 11px; line-height: 1; color: var(--spectrum-gray-600); margin-right: 8px; }
+
 .top .tools { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
 
 .subbar {
@@ -301,7 +304,7 @@ code {
 .vs.bad { color: var(--gai-bad); }
 
 /* trend */
-.trend-wrap { margin-top: var(--spectrum-spacing-300); }
+.trend-wrap { margin-bottom: var(--spectrum-spacing-300); }
 
 .trend { display: block; width: 100%; height: 72px; }
 .trend-cur { fill: none; stroke: var(--gai-accent); stroke-width: 2; vector-effect: non-scaling-stroke; }
@@ -425,3 +428,4 @@ code {
 }
 
 .signout { margin-top: var(--spectrum-spacing-200); }
+

@@ -66,9 +66,15 @@ export function demoPageReport(path, days) {
       { label: 'Germany', value: Math.round(pageViews * 0.07) },
       { label: 'Canada', value: Math.round(pageViews * 0.05) },
     ],
-    title: `Demo page ${path}`,
+    title: demoTitle(path),
     entrances: Math.round(pageViews * 0.48),
   };
+}
+
+function demoTitle(path) {
+  const slug = path.split('/').filter(Boolean).pop() || 'home';
+  const name = slug.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  return `${name} | Frescopa`;
 }
 
 export function demoRealtime(title) {

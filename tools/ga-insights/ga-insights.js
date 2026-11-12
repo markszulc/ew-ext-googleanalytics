@@ -15,7 +15,7 @@ const DEMO = params.has('demo');
 const SDK_TIMEOUT_MS = 3000;
 const REALTIME_MS = 60_000;
 const RANGES = [7, 28, 90];
-const DEMO_SITE_URL = 'https://www.example.com';
+const DEMO_SITE_URL = 'https://www.frescopa.coffee';
 
 const app = document.querySelector('#app');
 
@@ -274,6 +274,10 @@ function reportHtml() {
 
     <section class="card">
       <h2>Last ${r.days} days ${r.title ? `<small title="${esc(r.title)}">${esc(r.title)}</small>` : ''}</h2>
+      <div class="trend-wrap">
+        ${trendSvg(r.trend)}
+        <p class="trend-legend"><span class="key cur"></span>Daily views <span class="key prev"></span>Previous ${r.days} days</p>
+      </div>
       <div class="kpis">
         ${kpiCard({
     label: 'Views',
@@ -327,10 +331,6 @@ function reportHtml() {
     sub: versus(page.keyEventRate, site.keyEventRate, (v) => `${(v * 100).toFixed(1)}/100`),
     hint: 'Conversions per 100 visitors, compared with the site',
   })}
-      </div>
-      <div class="trend-wrap">
-        ${trendSvg(r.trend)}
-        <p class="trend-legend"><span class="key cur"></span>Daily views <span class="key prev"></span>Previous ${r.days} days</p>
       </div>
     </section>
 
@@ -452,9 +452,12 @@ function headerHtml() {
         <h1><img class="logo" src="ga-logo.svg" alt="" width="24" height="24">Google Analytics</h1>
         <button type="button" class="path" data-action="edit-path" title="${esc(pageUrl(path))}. Click to change the page path to analyse."><span>${esc(displayUrl(path))}</span><sp-icon-edit size="xs"></sp-icon-edit></button>
       </div>
+      <div class="side">
       <div class="tools">
         ${showControls ? '<sp-action-button quiet size="m" data-action="refresh" label="Refresh"><sp-icon-refresh slot="icon"></sp-icon-refresh></sp-action-button>' : ''}
         <sp-action-button quiet size="m" data-action="settings" label="Settings" ${state.view === 'settings' ? 'selected' : ''}><sp-icon-settings slot="icon"></sp-icon-settings></sp-action-button>
+      </div>
+      ${DEMO ? '<span class="demo-tag">Demo mode</span>' : ''}
       </div>
     </header>
     ${showControls ? `
@@ -463,7 +466,6 @@ function headerHtml() {
         ${RANGES.map((d) => `<sp-action-button value="${d}" ${d === state.days ? 'selected' : ''}>${d} days</sp-action-button>`).join('')}
       </sp-action-group>
     </div>` : ''}
-    ${DEMO ? banner('info', 'info-circle', 'Demo mode: showing synthetic data.') : ''}
     ${!state.actions && !DEMO ? banner('info', 'info-circle', 'Not connected to Experience Workspace. Running standalone.') : ''}
     ${state.notice ? banner('good', 'checkmark-circle', esc(state.notice), 'status') : ''}
     ${state.error && !state.invalidField ? banner('error', 'alert-triangle', esc(state.error), 'alert') : ''}`;
