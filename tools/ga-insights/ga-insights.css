@@ -127,7 +127,7 @@ code {
 }
 
 .top .side { display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; }
-.top .demo-tag { font-size: 11px; line-height: 1; color: var(--spectrum-gray-600); margin-right: 8px; }
+.top .demo-tag { font-size: 8px; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; color: rgb(0 0 0 / 30%); margin-right: 8px; }
 
 .top .tools { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
 
