@@ -1,0 +1,24 @@
+{
+  "name": "ew-ext-googleanalytics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:spectrum": "esbuild build/spectrum-entry.js --bundle --minify --format=esm --legal-comments=linked --outfile=tools/ga-insights/vendor/spectrum.js"
+  },
+  "devDependencies": {
+    "@spectrum-web-components/action-button": "^1.12.6",
+    "@spectrum-web-components/action-group": "^1.12.6",
+    "@spectrum-web-components/badge": "^1.12.6",
+    "@spectrum-web-components/button": "^1.12.6",
+    "@spectrum-web-components/divider": "^1.12.6",
+    "@spectrum-web-components/field-label": "^1.12.6",
+    "@spectrum-web-components/help-text": "^1.12.6",
+    "@spectrum-web-components/icons-workflow": "^1.12.6",
+    "@spectrum-web-components/menu": "^1.12.6",
+    "@spectrum-web-components/picker": "^1.12.6",
+    "@spectrum-web-components/progress-circle": "^1.12.6",
+    "@spectrum-web-components/textfield": "^1.12.6",
+    "@spectrum-web-components/theme": "^1.12.6",
+    "esbuild": "^0.28.2"
+  }
+}
